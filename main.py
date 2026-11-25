@@ -10,6 +10,13 @@ import os
 
 REVIEW = "One star. Monday sat me by the door, forgot my coffee, and billed me for a weekend I never finished."
 
+# Kit gates (competition.yaml): 1-180 chars, at most 25 words, one line.
+assert REVIEW, "entry must not be empty"
+assert "\n" not in REVIEW and "\r" not in REVIEW, "entry must be a single line"
+assert not REVIEW.isspace(), "entry must not be only whitespace"
+assert len(REVIEW) <= 180, "entry is %d chars, over the 180 cap" % len(REVIEW)
+assert len(REVIEW.split()) <= 25, "entry is %d words, over the 25-word cap" % len(REVIEW.split())
+
 
 def main() -> None:
     try:
